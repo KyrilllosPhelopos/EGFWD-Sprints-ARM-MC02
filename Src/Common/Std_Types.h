@@ -34,6 +34,10 @@
 # define STD_ON       1u
 # define STD_OFF      0u
 
+#define SETBIT(REG,BIT) ((REG)|= (1<<(BIT)))
+#define CLRBIT(REG,BIT) ((REG)&= (~(1<<(BIT))))
+#define GETBIT(REG,BIT) ((REG) & (1<<(BIT)))
+#define TOGLBIT(REG,BIT) ((REG)^= (1<<(BIT)))
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
