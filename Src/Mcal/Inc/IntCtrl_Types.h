@@ -15,15 +15,6 @@
  *********************************************************************************************************************/
 #include "Std_Types.h"
 
-/**********************************************************************************************************************
- *  GLOBAL CONSTANT MACROS
- *********************************************************************************************************************/
-
-
-/**********************************************************************************************************************
- *  GLOBAL FUNCTION MACROS
- *********************************************************************************************************************/
-
 
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
@@ -120,9 +111,9 @@ typedef enum
 
  typedef struct 
 {
-	IntCtrl_InterruptType	 			IntCtrl_Name;         /*value from IntCtrl_InterruptType enum*/
-	uint8												IntCtrl_GroupPri; 		/*value from 0 to 7 and it depends on NUM_OF_GROUP_PRI_SELECTOR*/
-	uint8 											IntCtrl_SubGroupPri; 	/*value from 0 to 7 and it depends on NUM_OF_GROUP_PRI_SELECTOR*/
+	IntCtrl_InterruptType	 	IntCtrl_Name;         /*value from IntCtrl_InterruptType enum*/
+	uint8					    IntCtrl_GroupPri; 		/*value from 0 to 7 and it depends on NUM_OF_GROUP_PRI_SELECTOR*/
+	uint8 						IntCtrl_SubGroupPri; 	/*value from 0 to 7 and it depends on NUM_OF_GROUP_PRI_SELECTOR*/
 	
 }IntCtrl_CfgTpe;
 

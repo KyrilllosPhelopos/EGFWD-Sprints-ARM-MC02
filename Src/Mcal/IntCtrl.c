@@ -12,7 +12,7 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "Mcu_Hw.h"
+#include "TM4C123GH6PM_REGISTERS.h"
 #include "IntCtrl.h"
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -75,7 +75,7 @@ void IntCtrl_Init(void)
 			);
 	#endif
 	
-	/*Configure Grouping\SubGrouping System in APINT register in SCB*/
+	/*Configure Grouping\SubGrouping (NUM_OF_GROUP_PRI_SELECTOR) System in APINT register in SCB*/
 	switch(numOfGpPri)
 	{
 		case 1:
@@ -90,18 +90,26 @@ void IntCtrl_Init(void)
 		case 8:
 			APINT = APINT_VECTKEY|(0x0<<8);
 			break;
-		/*if the user entered invalid number then the default will be 8 GP and 0 SubGP*/
+
+		/*if the user set invalid number then the default will be set to 8 GP and 0 SubGP*/
 		default:
 			APINT = APINT_VECTKEY|(0x0<<8);
 			break;
 	}
 	
+	/*##############################################################################
+			looping through the number of interrupts needed to set their configrations 
+	################################################################################*/
+
 	for(i=0; i<NUM_OF_ACTIVE_INTERRUPT; i++)
 	{
-		IntName = IntCtrl_Cfg_UserArray[i].IntCtrl_Name;
-		GroupPri = IntCtrl_Cfg_UserArray[i].IntCtrl_GroupPri;
-		SubGroupPri = IntCtrl_Cfg_UserArray[i].IntCtrl_SubGroupPri;
-		/*check for valid Group and Sub-Group Priorities*/
+		IntName = IntCtrl_Cfg_UserArray[i].IntCtrl_Name; // getting the interrupt name 
+		GroupPri = IntCtrl_Cfg_UserArray[i].IntCtrl_GroupPri; // getting the value of group periority
+		SubGroupPri = IntCtrl_Cfg_UserArray[i].IntCtrl_SubGroupPri; // getting the value of the subgroup periority
+		
+		/*******************************************************
+				check for valid Group and Sub-Group Priorities
+		******************************************************/
 		if((numOfGpPri == 8)) 
 		{
 			if(GroupPri > 7)
