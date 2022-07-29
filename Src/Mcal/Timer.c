@@ -159,7 +159,7 @@ void Gpt_DisableNotification(Gpt_ChannelType Channel)
 }
 
 
-void Gpt_EnableNotification(Gpt_ChannelType Channel , )
+void Gpt_EnableNotification(Gpt_ChannelType Channel  )
 {
 	/*set the appropriate bits in the GPTM Interrupt Mask Register(GPTMIMR)
 											Set TATOIM in IM Register*/
